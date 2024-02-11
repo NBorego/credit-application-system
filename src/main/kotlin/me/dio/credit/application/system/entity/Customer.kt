@@ -1,11 +1,19 @@
 package me.dio.credit.application.system.entity
 
-data class Customer (
-    var firstName: String = "",
-    var lastName: String = "",
-    val cpf: String,
-    var email: String = "",
-    var address: Address = Address(),
-    var credits: List<Credit> = mutableListOf(),
-    val ind: Long? = null
+import jakarta.persistence.*
+
+@Entity
+data class Customer(
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) val id: Long? = null,
+    @Column(nullable = false) var firstName: String = "",
+    @Column(nullable = false) var lastName: String = "",
+    @Column(nullable = false, unique = true) val cpf: String,
+    @Column(nullable = false, unique = true) var email: String = "",
+    @Column(nullable = false) @Embedded var address: Address = Address(),
+    @Column(nullable = false) @OneToMany(
+        fetch = FetchType.LAZY,
+        cascade = arrayOf(CascadeType.REMOVE, CascadeType.PERSIST),
+        mappedBy = "customer"
+    )
+    var credits: List<Credit> = mutableListOf()
 )
