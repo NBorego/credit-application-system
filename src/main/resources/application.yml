@@ -1,0 +1,21 @@
+spring:
+  data-source:
+    url: jdbc:h2:mem:credit_application_system_db
+    username: cami
+  # Faz com que as tabelas aparecem no banco de dados
+  jpa:
+    # Mostar o banco de dados no console
+    show-sql: true
+    hibernate:
+    # Indica a criação de um esquema
+    # Indica a remoção apos finalizar a aplicação
+    # # ddl-auto: create-drop
+    properties:
+      hibernate.format_sql: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        trace: false
+        web-allow-others: false
