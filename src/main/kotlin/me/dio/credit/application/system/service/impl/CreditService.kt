@@ -3,8 +3,8 @@ package me.dio.credit.application.system.service.impl
 import me.dio.credit.application.system.entity.Credit
 import me.dio.credit.application.system.repository.CreditRepository
 import me.dio.credit.application.system.service.ICreditService
-import org.hibernate.validator.constraints.UUID
 import org.springframework.stereotype.Service
+import java.util.UUID
 
 @Service
 class CreditService(
